@@ -10,14 +10,13 @@ pipeline{
     }
 
     stages{
-        stage ("checkout, Test & Publish") {
+        stage ("checkout, Test, Build & Publish") {
             steps{
                 git 'https://github.com/sadiqali6943/automation.git'
-                step {
-                    sh (/mvn -version/)
+                script {
                     sh (/mvn clean install)
                 }
-
+                step ([$RootPOM: 'pom.xml', GoalsAndOptions: 'clean test'])
                 step ([$class : 'Publisher', reportFilePattern : '**/testng-results.xml'])
             }
         }
