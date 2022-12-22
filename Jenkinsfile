@@ -10,10 +10,10 @@ pipeline{
     }
 
     stages{
-        stage ("checkout, Build & Publish") {
+        stage ("checkout, Test & Publish") {
             steps{
                 git 'https://github.com/sadiqali6943/automation.git'
-                script {
+                step {
                     sh (/mvn -version/)
                     sh (/mvn clean install)
                 }
