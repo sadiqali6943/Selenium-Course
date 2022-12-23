@@ -12,7 +12,7 @@ pipeline{
     stages{
         stage ("checkout, Test & Publish") {
             steps{
-                git 'https://github.com/sadiqali6943/automation.git'
+                checkout scm
                 script {
                     sh (/mvn clean test/)
                 }
