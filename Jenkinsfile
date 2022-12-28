@@ -14,7 +14,7 @@ pipeline{
             steps{
                 checkout scm
                 script {
-                    sh (/mvn clean test/)
+                    sh (/mvn clean install/)
                 }
 
                 step ([$class : 'Publisher', reportFilePattern : '**/testng-results.xml'])
